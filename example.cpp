@@ -60,7 +60,7 @@ void GoodbyeMessage();
 int HISTORY_HIGH_SCORE = 0; // used to record the highest scores during the whole program
  
 
-class Student
+class Student //主角
 {
 private:
     double x; // x coordinate
@@ -103,7 +103,7 @@ void Student::Move()
     Draw(); // wheter the user press key, there is always a student in the terminal     
 }
  
-class Score59
+class Score59 //怪物
 {
 private:
     double x; // x coordinate
@@ -157,7 +157,7 @@ void Score59::setGameMode(bool level)
     gameMode = level;
 }
  
-class Pass
+class Pass //子彈
 {
 private:
     int x; // x coordinate
