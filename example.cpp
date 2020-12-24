@@ -59,6 +59,7 @@ void GoodbyeMessage();
  
 int HISTORY_HIGH_SCORE = 0; // used to record the highest scores during the whole program
  
+
 class Student
 {
 private:
