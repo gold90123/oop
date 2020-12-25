@@ -2,6 +2,7 @@
 #include"monster.h"
 #include"tools.h"
 using namespace std;
+
 #define SPEED_SCORE59_EASY 0.1
 #define SPEED_SCORE59_HARD 0.5
 #define BORDER_DOWN 28

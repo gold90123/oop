@@ -6,7 +6,7 @@ private:
     static bool gameMode;
 public:
     static void setGameMode(bool level); // true(1) is the easy mode while false(0) is the hard mode
-    Score59(double x, double y) { this->x = x; this->y = y; }
+    monster(double x, double y) { this->x = x; this->y = y; }
     double X() { return x; } 
     double Y() { return y; }
     void Draw(); // show the current position of 59 in the terminal
