@@ -18,14 +18,13 @@ void Interface::WelcomeMessage()
     tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN);
     int x = 20;
     int y = 10;
-    tools::gotoxy(x, y  ); cout <<"  _____    _       _    _   _      _   _   ___    __    __   ______    _    _    _   ";
-    tools::gotoxy(x, y+1); cout <<" |  ___|  | |     | |  | | |  \\   | | | | /  /    \\ \\  / /  |  __  |  | |  | |  | |      " ;
-    tools::gotoxy(x, y+2); cout <<" | |___   | |     | |  | | | |\\\\  | | | |/  /      \\ \\/ /   | |  | |  | |  | |  | |       " ;
-    tools::gotoxy(x, y+3); cout <<" |  ___|  | |     | |  | | | | \\\\ | | |    /        \\  /    | |  | |  | |  | |  | |          ";
-    tools::gotoxy(x, y+4); cout <<" | |      | |     | |  | | | |  \\\\| | | |\\ \\         | |    | |  | |  | |  | |  |_|      ";                             
-    tools::gotoxy(x, y+5); cout <<" | |      | |___  | |__| | | |   \\  | | | \\ \\        | |    | |__| |  | |__| |   _         ";
-    tools::gotoxy(x, y+6); cout <<" |_|      |_____| |______| |_|    \\_| |_|  \\_\\       |_|    |______|  |______|  |_|       ";
-    tools::gotoxy(40, y+9); cout <<" developed by 驚奇4超人 C++. - 2019";
+    tools::gotoxy(x, y  ); cout <<"  _____ _           _     _       ";
+    tools::gotoxy(x, y+1); cout <<" / ____| |         | |   (_)      " ;
+    tools::gotoxy(x, y+2); cout <<"| (___ | |__   ___ | |_   _ _ __  " ;
+    tools::gotoxy(x, y+3); cout <<" \___ \| '_ \ / _ \| __| | | '_ \ ";
+    tools::gotoxy(x, y+4); cout <<" ____) | | | | (_) | |_  | | | | |";                             
+    tools::gotoxy(x, y+5); cout <<"|_____/|_| |_|\___/ \__| |_|_| |_|";
+    tools::gotoxy(40, y + 9); cout << " 開發人員 :高琉瑜";
     tools::gotoxy(31, y+12); cout << "Press R/r to see game guide. Press other keys to play.";
 }
 
