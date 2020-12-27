@@ -76,12 +76,12 @@ public:
  
 void Student::Draw()
 {
-    gotoxy(x, y); cout << "傑";
+    gotoxy(x, y); cout << "🐒";
 }
  
 void Student::Erase()
 {
-    gotoxy(x, y); cout << "  ";  
+    gotoxy(x, y); cout << " ";
 }
  
 void Student::Move()
@@ -174,15 +174,15 @@ public:
  
 void Pass::Draw()
 {
-    gotoxy(x, y); cout << "及"; //  while (y - 1) means a row above y
-    gotoxy(x, y + 1); cout << "格"; // (y + 1) means a row below y
+    gotoxy(x, y); cout << "🍌"; //  while (y - 1) means a row above y
+   // gotoxy(x, y + 1); cout << "格"; // (y + 1) means a row below y
  
 }
  
 void Pass::Erase()
 {
     gotoxy(x, y); cout << "  ";     
-    gotoxy(x, y + 1); cout << "  ";     
+   // gotoxy(x, y + 1); cout << "  ";     
 }
  
 void Pass::Move()
@@ -268,7 +268,6 @@ void DrawWhiteSpace(int a_x, int a_y, int b_x, int b_y) // to clean a certain sp
 void Initialize() // set console title and hide console cursor
 {
     // set console title
-    SetConsoleTitle("Flunk You"); 
     
     // hide console cursor
     HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
