@@ -1,7 +1,9 @@
 #include<iostream>
 #include<conio.h>
 #include<windows.h>
+#include<list>
 #include"game.h"
+#include"bullet.h"
 #include"interface.h"
 #include"monster.h"
 #include"tools.h"
@@ -61,10 +63,10 @@ bool game::StartGame()
     int gameScore = 0; // the score of the game
     
     Student std = Student(STUDENT_INITIAL_X, STUDENT_INITIAL_Y); // the position of student in the beginning
-    list<Score59> scores; // dynamic list for 59("五九")  
-    list<Score59>::iterator s; // iterator for the list
-    list<Pass> passes; // dynamic list for pass("及格") 
-    list<Pass>::iterator p; // another iterator for this list 
+    list<monster> scores; // dynamic list for 59("五九")
+    list<monster>::iterator s; // iterator for the list
+    list<bullet> passes; // dynamic list for pass("及格") 
+    list<bullet>::iterator p; // another iterator for this list 
     
     srand(time(nullptr)); // generate random number for the positions of 59s
     int mapWidth = BORDER_RIGHT - BORDER_LEFT + 1; // border included
