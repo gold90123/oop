@@ -22,3 +22,15 @@ void tools::DrawWhiteSpace(int a_x, int a_y, int b_x, int b_y) // to clean a cer
         }
     }
 }
+void tools::Initialize() // set console title and hide console cursor
+{
+    // set console title
+    SetConsoleTitle("Flunk You"); 
+    
+    // hide console cursor
+    HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cci;
+    cci.dwSize = 1;
+    cci.bVisible = FALSE;
+    SetConsoleCursorInfo(hCon, &cci);
+}

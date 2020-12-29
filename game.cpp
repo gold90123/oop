@@ -7,12 +7,13 @@
 #include"interface.h"
 #include"monster.h"
 #include"tools.h"
+#include"student.h"
 using namespace std;
 
 #define BORDER_RIGHT_WIDE 115
 #define BORDER_DOWN 28
 #define TIME_LIMIT 30
-#define BORDER_RIGHT 73 
+#define BORDER_RIGHT 73
 #define BORDER_LEFT 43  
 #define BORDER_UP 2
 #define SCORE59_CNT 10
@@ -22,7 +23,17 @@ using namespace std;
 #define LOSE_GAME_POINT 5
 #define VICTORY_GATE 60
 #define SHOW_MSG_SHORT 100
-#define INTERVAL_BETWEEN_EACH_LOOP 20 
+#define INTERVAL_BETWEEN_EACH_LOOP 20
+#define EQUALITY_GAP_X 1.5
+#define EQUALITY_GAP_Y 1
+#define TIME_POS_X 20 
+#define TIME_POS_Y 0
+#define CUR_SCORE_POS_X 50
+#define CUR_SCORE_POS_Y 0  
+#define HIS_SCORE_POS_X 80
+#define HIS_SCORE_POS_Y 0  
+
+int HISTORY_HIGH_SCORE = 0;
 
 void game::ChooseGameMode()
 {
@@ -77,17 +88,17 @@ bool game::StartGame()
     {
         rnX = (rand() % mapWidth) + BORDER_LEFT;
         rnY = (rand() % (mapLength / 2)) + (BORDER_UP); //  (mapLength / 2) prevents 59s from being too low on the map at first
-        scores.push_back(Score59(rnX, rnY));
+        scores.push_back(monster(rnX, rnY));
     }
     
     while(duration < timeLimit) // while the game is not end
     {   
         for (p = passes.begin(); p != passes.end(); p++) // for every pass that in the list
         {
-            p->Move(); // move a SPEED_PASS unit upward
-            if (p->isOut()) // if the pass reaches the top of map
+            p->move(); // move a SPEED_PASS unit upward
+            if (p->isout()) // if the pass reaches the top of map
             {
-                p->Erase(); // clear it in the terminal 
+                p->erase(); // clear it in the terminal 
                 p = passes.erase(p); // delete it in the list
             }
         }
@@ -101,7 +112,7 @@ bool game::StartGame()
                 s = scores.erase(s); // delete it in the list
                 
                 rnX = (rand() % mapWidth) + BORDER_LEFT;
-                scores.push_back(Score59(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+                scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
             }   
         }
         
@@ -113,13 +124,13 @@ bool game::StartGame()
                 if (Collision(s->X(), s->Y(), p->X(), p->Y())) 
                 {
                     gameScore += GET_GAME_POINT;
-                    p->Erase(); // clear it in the terminal
+                    p->erase(); // clear it in the terminal
                     s->Erase(); // clear it in the terminal  
                     p = passes.erase(p); // delete it in the list
                     s = scores.erase(s); // delete it in the list
                     
                     rnX = (rand() % mapWidth) + BORDER_LEFT;
-                    scores.push_back(Score59(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+                    scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
                 }
             }
         } 
@@ -136,7 +147,7 @@ bool game::StartGame()
                 s = scores.erase(s); // delete it in the list
                 
                 rnX = (rand() % mapWidth) + BORDER_LEFT;
-                scores.push_back(Score59(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+                scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
             }           
         }
                  
@@ -145,7 +156,7 @@ bool game::StartGame()
             char key = getch();
             if(key == ' ') // press the space bar, and add a pass to the pass list
             {
-                passes.push_back(Pass(std.X(), std.Y() - 1));
+                passes.push_back(bullet(std.X(), std.Y() - 1));
             }
         }
         
@@ -164,4 +175,51 @@ bool game::StartGame()
         return true;
     else 
         return false;
+}
+bool Collision(double x1, double y1, double x2, double y2) // check whether 59 bumps into any passes
+{
+    if (abs(x1 -x2) < EQUALITY_GAP_X) // the width of 59 is not the same as the width of "傑"   
+    {
+        if (abs(y1 -y2) < EQUALITY_GAP_Y) 
+            return true;
+        else
+            return false;
+    }
+    
+    return false; 
+}
+void UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game information to the user during the game
+{
+    tools::gotoxy(TIME_POS_X, TIME_POS_Y); cout << "剩餘時間: " << leftTime.count() << "   "; // update time 
+    // because sometimes the digits of number are different, print some white spaces after the number to erase the digits from the previous number 
+    tools::gotoxy(CUR_SCORE_POS_X, CUR_SCORE_POS_Y); cout << "分數: " << gameScore << "  "; // update game score 
+    tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "歷史高分: " << HISTORY_HIGH_SCORE; // update history high game score     
+    if (gameScore >= HISTORY_HIGH_SCORE)
+    {
+        HISTORY_HIGH_SCORE = gameScore;
+        tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "歷史高分: " << HISTORY_HIGH_SCORE; // update history high game score     
+    }
+}
+ 
+bool PlayAgainOrNot()
+{
+    Interface::PlayAgainMessage();
+    
+    char playAgainKey = '0';    
+    bool VaildKeyForPlayAgain = false;  
+    
+    while (!VaildKeyForPlayAgain) // prevent the user from pressing inappropriate keys
+    {
+        playAgainKey = getch(); 
+        
+        if (playAgainKey == 'y' || playAgainKey == 'Y' || playAgainKey == 'n' || playAgainKey == 'N')
+        {
+            VaildKeyForPlayAgain = true;
+        }       
+    }
+    
+    if (playAgainKey == 'n' || playAgainKey == 'N')
+        return false;                   
+    else
+        return true;
 }

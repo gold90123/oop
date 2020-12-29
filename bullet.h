@@ -3,7 +3,6 @@
 #include"tools.h"
 #include"interface.h"
 
-
 class bullet {
 private:
 	int x;

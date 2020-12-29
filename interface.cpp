@@ -95,19 +95,19 @@ void Interface::DefeatMessage()
     tools::gotoxy(x, y+5); cout << "           @!!!   !@!  !!!  !@!  !!!     !!!@!!!!  !!@!@!    !!!!!:    ";
     tools::gotoxy(x, y+6); cout << "           !!:    !!:  !!!  !!:  !!!     !!:  !!!  !!: :!!   !!:       ";
     tools::gotoxy(x, y+7); cout << "           :!:    :!:  !:!  :!:  !:!     :!:  !:!  :!:  !:!  :!:       ";
-   tools::gotoxy(x, y+8); cout << "            ::    ::::: ::  ::::: ::     ::   :::  ::   :::   :: ::::  ";
-   tools::gotoxy(x, y+9); cout << "            :      : :  :    : :  :       :   : :   :   : :  : :: ::   ";
-   tools::gotoxy(x, y+10); cout << "";
-   tools::gotoxy(x, y+12); cout << "                    @@@        @@@@@@    @@@@@@   @@@@@@@  ";
-   tools::gotoxy(x, y+13); cout << "                    @@@       @@@@@@@@  @@@@@@@   @@@@@@@  ";
-   tools::gotoxy(x, y+14); cout << "                    @@!       @@!  @@@  !@@         @@!    ";
-   tools::gotoxy(x, y+15); cout << "                    !@!       !@!  @!@  !@!         !@!    ";
-   tools::gotoxy(x, y+16); cout << "                    @!!       @!@  !@!  !!@@!!      @!!    ";
-   tools::gotoxy(x, y+17); cout << "                    !!!       !@!  !!!   !!@!!!     !!!    ";
-   tools::gotoxy(x, y+18); cout << "                    !!:       !!:  !!!       !:!    !!:    ";
-   tools::gotoxy(x, y+19); cout << "                     :!:      :!:  !:!      !:!     :!:   ";
-   tools::gotoxy(x, y+20); cout << "                     :: ::::  ::::: ::  :::: ::      ::    ";
-   tools::gotoxy(x, y+21); cout << "                    : :: : :   : :  :   :: : :       :   ";
+    tools::gotoxy(x, y+8); cout << "            ::    ::::: ::  ::::: ::     ::   :::  ::   :::   :: ::::  ";
+    tools::gotoxy(x, y+9); cout << "            :      : :  :    : :  :       :   : :   :   : :  : :: ::   ";
+    tools::gotoxy(x, y+10); cout << "";
+    tools::gotoxy(x, y+12); cout << "                    @@@        @@@@@@    @@@@@@   @@@@@@@  ";
+    tools::gotoxy(x, y+13); cout << "                    @@@       @@@@@@@@  @@@@@@@   @@@@@@@  ";
+    tools::gotoxy(x, y+14); cout << "                    @@!       @@!  @@@  !@@         @@!    ";
+    tools::gotoxy(x, y+15); cout << "                    !@!       !@!  @!@  !@!         !@!    ";
+    tools::gotoxy(x, y+16); cout << "                    @!!       @!@  !@!  !!@@!!      @!!    ";
+    tools::gotoxy(x, y+17); cout << "                    !!!       !@!  !!!   !!@!!!     !!!    ";
+    tools::gotoxy(x, y+18); cout << "                    !!:       !!:  !!!       !:!    !!:    ";
+    tools::gotoxy(x, y+19); cout << "                     :!:      :!:  !:!      !:!     :!:   ";
+    tools::gotoxy(x, y+20); cout << "                     :: ::::  ::::: ::  :::: ::      ::    ";
+    tools::gotoxy(x, y+21); cout << "                    : :: : :   : :  :   :: : :       :   ";
 
 }
  

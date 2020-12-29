@@ -3,12 +3,11 @@
 #include <windows.h>
 #include "tools.h"
 #include <conio.h>
-
 using namespace std;
 
 void Base::Draw()
 {
-    tools:: gotoxy(x, y); cout << "¡³";
+    tools:: gotoxy(x, y); cout << "ï¿½ï¿½";
 }
 
 void Base::Erase()
