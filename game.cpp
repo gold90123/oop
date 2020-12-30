@@ -7,7 +7,7 @@
 #include"interface.h"
 #include"monster.h"
 #include"tools.h"
-#include"student.h"
+#include"PLane.h"
 using namespace std;
 
 #define BORDER_RIGHT_WIDE 115
