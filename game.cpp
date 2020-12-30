@@ -31,7 +31,7 @@ using namespace std;
 #define CUR_SCORE_POS_X 50
 #define CUR_SCORE_POS_Y 0  
 #define HIS_SCORE_POS_X 80
-#define HIS_SCORE_POS_Y 0  
+#define HIS_SCORE_POS_Y 0 
 
 int HISTORY_HIGH_SCORE = 0;
 
@@ -73,7 +73,7 @@ bool game::StartGame()
     auto start = chrono::steady_clock::now(); // record the start time
     int gameScore = 0; // the score of the game
     
-    Student std = Student(STUDENT_INITIAL_X, STUDENT_INITIAL_Y); // the position of student in the beginning
+    Plane std = Plane(STUDENT_INITIAL_X, STUDENT_INITIAL_Y); // the position of student in the beginning
     list<monster> scores; // dynamic list for 59("五九")
     list<monster>::iterator s; // iterator for the list
     list<bullet> passes; // dynamic list for pass("及格") 

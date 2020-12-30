@@ -20,13 +20,13 @@ Plane::Plane(double x,double y){
 }
 
 double Plane::X(){ return x; }
-double PLane::Y(){ return y; }
+double Plane::Y(){ return y; }
 
 void Plane::Draw()
 {tools::
     gotoxy(x-2, y-1); cout << "|▅●▅|";
-    gotoxy(x-2, y); cout << " └▇┘";
-    gotoxy(x-2, y+1); cout << " ︻┴︻";
+    tools::gotoxy(x-2, y); cout << " └▇┘";
+    tools::gotoxy(x-2, y+1); cout << " ︻┴︻";
     
     
 }
@@ -48,7 +48,7 @@ void Plane::Move()
         case KEY_LEFT: if (x - SPEED_PLANE > BORDER_LEFT) { x -= SPEED_PLANE; break; }
         case KEY_RIGHT: if (x + SPEED_PLANE < BORDER_RIGHT) { x += SPEED_PLANE; break; }
         case KEY_UP: if (y - SPEED_PLANE > BORDER_UP) { y -= SPEED_PLANE; break; }
-        case KEY_DOWN: if (y + SSPEED_PLANE < BORDER_DOWN) { y += SPEED_PLANE; break; }
+        case KEY_DOWN: if (y + SPEED_PLANE < BORDER_DOWN) { y += SPEED_PLANE; break; }
         }
     }
 

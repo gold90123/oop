@@ -3,6 +3,8 @@
 #include<windows.h>
 using namespace std;
 
+
+
 void tools::gotoxy(double x, double y) // allows to move inside the terminal using coordinates 
 {   // the type is double, so objects can move less than 1 unit 
     HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);

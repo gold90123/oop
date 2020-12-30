@@ -6,7 +6,7 @@
 
 #define BORDER_RIGHT_WIDE 115
 #define BORDER_DOWN 28
-#define SHOW_MSG_LONG 1500 
+#define SHOW_MSG_LONG 1500
 
 int main()
 {
