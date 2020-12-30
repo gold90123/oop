@@ -3,6 +3,7 @@
 #include"tools.h"
 #include"interface.h"
 #include"game.h"
+#pragma warning(disable:4996)
 
 #define BORDER_RIGHT_WIDE 115
 #define BORDER_DOWN 28

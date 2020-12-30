@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BULLET_H
+#define BULLET_H
+
 #include<iostream>
 #include"tools.h"
 #include"interface.h"
@@ -16,4 +18,5 @@ public:
 	void move();
 	bool isout();
 };
+#endif
 //push

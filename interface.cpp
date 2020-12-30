@@ -24,7 +24,7 @@ void Interface::WelcomeMessage()
     tools::gotoxy(x, y+3); cout <<" \___ \| '_ \ / _ \| __| | | '_ \ ";
     tools::gotoxy(x, y+4); cout <<" ____) | | | | (_) | |_  | | | | |";
     tools::gotoxy(x, y+5); cout <<"|_____/|_| |_|\___/ \__| |_|_| |_|";
-    tools::gotoxy(40, y + 9); cout << " 開發人員 :高琉瑜";
+    tools::gotoxy(40, y + 9); cout << " 開發人員 ";
     tools::gotoxy(31, y+12); cout << "Press R/r to see game guide. Press other keys to play.";
 }
 
@@ -44,7 +44,7 @@ void Interface::GuideMessage()
     tools::gotoxy(48, y+10); cout << "    遊戲玩法    ";
     tools::gotoxy(x, y+12); cout << "你是主角，很多怪物從天而降，你需要發射「子彈」去消滅那些怪物";
     tools::gotoxy(x, y+14); cout <<"發射方式 : 按下鍵盤的空白鍵    移動方式 : 按下鍵盤的方向鍵 ";
-    tools::gotoxy(x, y+16); cout <<"計分方式 : 每消滅一個怪物即得" << GET_GAME_POINT << "分，若被怪物打到，扣" << LOSE_GAME_POINT << "分";
+  //  tools::gotoxy(x, y+16); cout <<"計分方式 每消滅一個怪物即得" << GET_GAME_POINT << "分 若被怪物打到 扣" << LOSE_GAME_POINT << "分";
     tools::gotoxy(x, y+18); cout <<"遊戲時間共" << TIME_LIMIT << "秒，在時間內打到" << VICTORY_GATE << "分即可過關";
     tools::gotoxy(x, y+20); cout <<"按下任意鍵開始遊戲";
 }

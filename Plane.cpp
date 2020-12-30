@@ -3,6 +3,7 @@
 #include <conio.h>
 #include<iostream>
 using namespace std;
+#pragma warning(disable:4996)
 
 #define KEY_UP    72 // arrow keys' ascii numbers
 #define KEY_DOWN  80
@@ -23,12 +24,15 @@ double Plane::X(){ return x; }
 double Plane::Y(){ return y; }
 
 void Plane::Draw()
-{tools::
-    gotoxy(x-2, y-1); cout << "|▅●▅|";
-    tools::gotoxy(x-2, y); cout << " └▇┘";
-    tools::gotoxy(x-2, y+1); cout << " ︻┴︻";
+{
+	/*tools::gotoxy(x - 2, y - 1); cout << "|▅●▅|";
+	tools::gotoxy(x - 2, y); cout << " └▇┘";
+    tools::gotoxy(x-2, y+1); cout << " ︻┴︻";*/
     
-    
+	tools::gotoxy(x - 2, y - 1); cout << "*";
+	tools::gotoxy(x - 2, y); cout << " *";
+	tools::gotoxy(x - 2, y + 1); cout << " *";
+
 }
 
 void Plane::Erase()

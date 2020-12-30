@@ -1,3 +1,5 @@
+#ifndef PLANE_H
+#define PLANE_H
 
 class Plane
 {
@@ -13,4 +15,4 @@ private:
     double x; // x coordinate
     double y;
 }; 
-
+#endif

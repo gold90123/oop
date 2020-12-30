@@ -1,3 +1,5 @@
+#ifndef GAME_H
+#define GAME_H
 #include<chrono>
 using namespace std;
 
@@ -10,3 +12,4 @@ public:
     static void UpdateInfoBar(int gameScore, std::chrono::seconds leftTime);
     static bool PlayAgainOrNot();
 };
+#endif

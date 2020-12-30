@@ -1,3 +1,5 @@
+#ifndef INTERFACE_H
+#define INTERFACE_H
 class Interface
 {
 public:
@@ -9,3 +11,4 @@ public:
     static void PlayAgainMessage();
     static void GoodbyeMessage();
 };
+#endif

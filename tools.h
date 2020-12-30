@@ -31,6 +31,8 @@
 #define LOSE_GAME_POINT 5
 #define VICTORY_GATE 60
 
+#ifndef TOOLS_H
+#define TOOLS_H
 class tools
 {
 public:
@@ -39,3 +41,4 @@ public:
     static void Initialize();
     static void WelcomeMessage(); 
 };
+#endif

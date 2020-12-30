@@ -1,3 +1,6 @@
+#ifndef MONSTER_H
+#define MONSTER_H
+
 class monster //怪物
 {
 private:
@@ -14,3 +17,4 @@ public:
     void Move(); // move 59 
     bool isOut(); // detect whether 59 is out of the boundry
 };
+#endif
