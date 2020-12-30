@@ -14,21 +14,28 @@ using namespace std;
 #define BORDER_RIGHT 73 
 #define SPEED_STUDENT 1.1
 
-Student::Student(double x, double y)
-    :Base(x, y)
-{
+Student::Student(double x,double y){
+    this->x = x; this->y = y;
+    
 }
+
+double Student::X(){ return x; }
+double Student::Y(){ return y; }
 
 void Student::Draw()
 {tools::
-    gotoxy(x, y); cout << "��";
+    gotoxy(x-2, y-1); cout << "|▅●▅|";
+    gotoxy(x-2, y); cout << " └▇┘";
+    gotoxy(x-2, y+1); cout << " ︻┴︻";
+    
+    
 }
 
-/*void Student::Erase()
+void Student::Erase()
 {
     tools::gotoxy(x, y); cout << "  ";
 }
-*/
+
 void Student::Move()
 {
     if (kbhit())
