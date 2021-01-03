@@ -44,5 +44,7 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+       // "windows": "cpp",
+       // "conio": "cpp"
+    },
 }

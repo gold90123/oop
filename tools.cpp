@@ -27,7 +27,7 @@ void tools::DrawWhiteSpace(int a_x, int a_y, int b_x, int b_y) // to clean a cer
 void tools::Initialize() // set console title and hide console cursor
 {
     // set console title
-    SetConsoleTitle("Flunk You"); 
+    //SetConsoleTitle("Flunk You"); 
     
     // hide console cursor
     HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);

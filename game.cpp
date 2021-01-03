@@ -7,8 +7,8 @@
 #include"interface.h"
 #include"monster.h"
 #include"tools.h"
-#include"PLane.h"
-#pragma warning(disable:4996)
+#include"Plane.h"
+//#pragma warning(disable:4996)
 using namespace std;
 
 #define BORDER_RIGHT_WIDE 115
