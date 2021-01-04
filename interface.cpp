@@ -31,6 +31,7 @@ void Interface::WelcomeMessage()
 void Interface::GuideMessage()
 {
 	cout << "this is guide message" << endl;
+	cout << "yuwei is idiot" << endl;
 
 }
 void Interface::GameModeMessage()
