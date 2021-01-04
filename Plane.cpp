@@ -29,15 +29,18 @@ void Plane::Draw()
 	tools::gotoxy(x - 2, y); cout << " └▇┘";
     tools::gotoxy(x-2, y+1); cout << " ︻┴︻";*/
     
-	tools::gotoxy(x - 2, y - 1); cout << "*";
-	tools::gotoxy(x - 2, y); cout << " *";
-	tools::gotoxy(x - 2, y + 1); cout << " *";
+	//tools::gotoxy(x, y - 1); cout << "*";    //gotoxy(x - 2, y - 1) 全部都是 x - 2    ?_?
+	tools::gotoxy(x, y); cout << "*";
+	//tools::gotoxy(x, y + 1); cout << "*";
 
 }
 
 void Plane::Erase()
 {
-    tools::gotoxy(x, y); cout << "  ";
+    //tools::gotoxy(x, y - 1); cout << " ";    //gotoxy(x - 2, y - 1) 全部都是 x - 2    ?_?
+	tools::gotoxy(x, y); cout << " ";
+	//tools::gotoxy(x, y + 1); cout << " ";
+
 }
 
 void Plane::Move()

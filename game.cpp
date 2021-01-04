@@ -177,7 +177,7 @@ bool game::StartGame()
     else 
         return false;
 }
-bool Collision(double x1, double y1, double x2, double y2) // check whether 59 bumps into any passes
+bool game::Collision(double x1, double y1, double x2, double y2) // check whether 59 bumps into any passes
 {
     if (abs(x1 -x2) < EQUALITY_GAP_X) // the width of 59 is not the same as the width of "傑"   
     {
@@ -189,7 +189,7 @@ bool Collision(double x1, double y1, double x2, double y2) // check whether 59 b
     
     return false; 
 }
-void UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game information to the user during the game
+void game::UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game information to the user during the game
 {
     tools::gotoxy(TIME_POS_X, TIME_POS_Y); cout << "剩餘時間: " << leftTime.count() << "   "; // update time 
     // because sometimes the digits of number are different, print some white spaces after the number to erase the digits from the previous number 
@@ -202,7 +202,7 @@ void UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game 
     }
 }
  
-bool PlayAgainOrNot()
+bool game::PlayAgainOrNot()
 {
     Interface::PlayAgainMessage();
     
@@ -211,7 +211,7 @@ bool PlayAgainOrNot()
     
     while (!VaildKeyForPlayAgain) // prevent the user from pressing inappropriate keys
     {
-        playAgainKey = getch(); 
+        playAgainKey = getchar(); //getch()
         
         if (playAgainKey == 'y' || playAgainKey == 'Y' || playAgainKey == 'n' || playAgainKey == 'N')
         {
