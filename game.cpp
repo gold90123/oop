@@ -8,7 +8,7 @@
 #include"monster.h"
 #include"tools.h"
 #include"Plane.h"
-//#pragma warning(disable:4996)
+#pragma warning(disable:4996)
 using namespace std;
 
 #define BORDER_RIGHT_WIDE 115
@@ -75,9 +75,9 @@ bool game::StartGame()
     int gameScore = 0; // the score of the game
     
     Plane std = Plane(STUDENT_INITIAL_X, STUDENT_INITIAL_Y); // the position of student in the beginning
-    list<monster> scores; // dynamic list for 59("五九")
+    list<monster> scores; // dynamic list for 59("�?�?")
     list<monster>::iterator s; // iterator for the list
-    list<bullet> passes; // dynamic list for pass("及格") 
+    list<bullet> passes; // dynamic list for pass("??????") 
     list<bullet>::iterator p; // another iterator for this list 
     
     srand(time(nullptr)); // generate random number for the positions of 59s
@@ -179,7 +179,7 @@ bool game::StartGame()
 }
 bool game::Collision(double x1, double y1, double x2, double y2) // check whether 59 bumps into any passes
 {
-    if (abs(x1 -x2) < EQUALITY_GAP_X) // the width of 59 is not the same as the width of "傑"   
+    if (abs(x1 -x2) < EQUALITY_GAP_X) // the width of 59 is not the same as the width of "???"   
     {
         if (abs(y1 -y2) < EQUALITY_GAP_Y) 
             return true;
@@ -191,14 +191,14 @@ bool game::Collision(double x1, double y1, double x2, double y2) // check whethe
 }
 void game::UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game information to the user during the game
 {
-    tools::gotoxy(TIME_POS_X, TIME_POS_Y); cout << "剩餘時間: " << leftTime.count() << "   "; // update time 
+    tools::gotoxy(TIME_POS_X, TIME_POS_Y); cout << "Time Left : " << leftTime.count() << "   "; // update time 
     // because sometimes the digits of number are different, print some white spaces after the number to erase the digits from the previous number 
-    tools::gotoxy(CUR_SCORE_POS_X, CUR_SCORE_POS_Y); cout << "分數: " << gameScore << "  "; // update game score 
-    tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "歷史高分: " << HISTORY_HIGH_SCORE; // update history high game score     
+    tools::gotoxy(CUR_SCORE_POS_X, CUR_SCORE_POS_Y); cout << "Score : " << gameScore << "  "; // update game score 
+    tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "High Record : " << HISTORY_HIGH_SCORE; // update history high game score     
     if (gameScore >= HISTORY_HIGH_SCORE)
     {
         HISTORY_HIGH_SCORE = gameScore;
-        tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "歷史高分: " << HISTORY_HIGH_SCORE; // update history high game score     
+        tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "High Record : " << HISTORY_HIGH_SCORE; // update history high game score     
     }
 }
  

@@ -36,3 +36,9 @@ void tools::Initialize() // set console title and hide console cursor
     cci.bVisible = FALSE;
     SetConsoleCursorInfo(hCon, &cci);
 }
+void tools::SetColor(int color)
+{
+    HANDLE hConsole;
+  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+  SetConsoleTextAttribute(hConsole,color);
+}

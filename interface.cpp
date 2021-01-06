@@ -1,4 +1,5 @@
-#include<iostream>
+﻿#include<iostream>
+#include<windows.h>
 #include"interface.h"
 #include"tools.h"
 using namespace std;
@@ -16,22 +17,41 @@ using namespace std;
 void Interface::WelcomeMessage()
 {
     tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN);
-    int x = 20;
+    int x = 31;
     int y = 10;
     tools::gotoxy(x, y  ); cout <<"  _____ _           _     _       ";
     tools::gotoxy(x, y+1); cout <<" / ____| |         | |   (_)      ";
-    tools::gotoxy(x, y+2); cout <<"| (___ | |__   ___ | |_   _ _ __  ";
-    tools::gotoxy(x, y+3); cout <<" a___  '_ a / _ a __| | | '_ a ";
-    tools::gotoxy(x, y+4); cout <<" ____) | | | | (_) | |_  | | | | |";
-    tools::gotoxy(x, y+5); cout <<"|_____/|_| |_|a___/ a__| |_|_| |_|";
-    tools::gotoxy(40, y + 9); cout << " 開發人員 ";
-    tools::gotoxy(31, y+12); cout << "Press R/r to see game guide. Press other keys to play.";
+    tools::gotoxy(x, y+2); cout <<"| (___ | |__   ___ | |_   _ _ ____ ";
+    tools::gotoxy(x, y+3); cout <<" \\___  '_ \\ / _ \\ __| | | |_ _  \\";
+    tools::gotoxy(x, y+4); cout <<" ____) | | | | (_) | |_  | | | | | |  ";
+    tools::gotoxy(x, y+5); cout <<"|_____/|_| |_|\\___/ \\__| |_|_| |_|";
+	//○■□ぁ☆★ⅢⅤ┌  can be used
+	
+	tools::gotoxy(32,y+8); cout  <<"┌───────────────────────────────────────────────┐";
+    tools::gotoxy(31,y +9);cout << "〈  ";
+	tools::SetColor(27);
+	cout<<"Operators:  A1085528    A1085513    A1085535";
+	tools::SetColor();
+	cout<<"  〉";
+    tools::gotoxy(32,y+10); cout <<"└───────────────────────────────────────────────┘";
+	
+    tools::gotoxy(x, y+12); cout << "Press R/r to see game guide. Press other keys to play.";
 }
-
+//
 void Interface::GuideMessage()
 {
-	cout << "this is guide message" << endl;
-	cout << "yuwei is idiot" << endl;
+	tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN);
+	int x = 30;
+	int y = 5;
+	tools::SetColor(11);
+	tools::gotoxy(x,y); cout << "How To Play";
+	tools::SetColor();
+	tools::gotoxy(x,y + 1); cout<< "You have to shoot down as much stars as you can while not getting hit";
+	tools::gotoxy(x,y + 2); cout<< "press arrow keys to move";
+	tools::gotoxy(x,y + 3); cout<< "press space to shoot";
+	
+
+	
 
 }
 void Interface::GameModeMessage()
@@ -40,40 +60,38 @@ void Interface::GameModeMessage()
 	int x = 40;
 	int y = 10;
 	tools::gotoxy(x, y); cout << "";
-	tools::gotoxy(x, y + 1); cout << "請選擇遊戲難度:";
-	tools::gotoxy(x, y + 2); cout << "";
-	tools::gotoxy(x, y + 3); cout << "簡單：按 E/e";
-	tools::gotoxy(x, y + 4); cout << "";
-	tools::gotoxy(x, y + 5); cout << "困難：按 H/h";
-	tools::gotoxy(x, y + 6); cout << "";
+	tools::gotoxy(x, y + 1); cout << "Choose Gamemode:"<<endl;
+	tools::gotoxy(x, y + 2); cout << "Easy(e)";
+	tools::gotoxy(x, y + 3); cout << "Hard(h)";
+
 }
 
 void Interface::VictoryMessage()
 {
-	tools::DrawWhiteSpace(BORDER_LEFT_WIDE, BORDER_UP, BORDER_RIGHT_WIDE, BORDER_DOWN);
+	tools::DrawWhiteSpace(BORDER_LEFT_WIDE, BORDER_UP, BORDER_RIGHT_WIDE, BORDER_DOWN+15);
 	int x = 25;
 	int y = 10;
-	tools::gotoxy(x, y); cout << "            88                                                       ";
-	tools::gotoxy(x, y + 1); cout << "            ""              ,d                                       ";
-	tools::gotoxy(x, y + 2); cout << "                            88                                       ";
-	tools::gotoxy(x, y + 3); cout << "8b       d8 88  ,adPPYba, MM88MMM ,adPPYba,  8b,dPPYba, 8b       d8  ";
-	tools::gotoxy(x, y + 4); cout << "`8b     d8' 88 a8\"     \"\"   88   a8\"     \"8a 88P'   \"Y8 `8b     d8'  ";
-	tools::gotoxy(x, y + 5); cout << " `8b   d8'  88 8b          88   8b       d8 88          `8b   d8'   ";
-	tools::gotoxy(x, y + 6); cout << "  `8b,d8'   88 \"8a, , aa   88, \"8a,   ,a8\" 88           `8b,d8'";
+	tools::SetColor(14);
+	tools::gotoxy(x, y); cout << "            88                                                                  ";
+	tools::gotoxy(x, y + 1); cout << "            \"\"              ,d                                            ";
+	tools::gotoxy(x, y + 2); cout << "                            88                                              ";
+	tools::gotoxy(x, y + 3); cout << "8b       d8 88  ,adPPYba, MM88MMM ,adPPYba,  8b,dPPYba, 8b       d8         ";
+	tools::gotoxy(x, y + 4); cout << "`8b     d8' 88 a8\"     \"\"   88   a8\"     \"8a 88P'   \"Y8 `8b      d8'  ";
+	tools::gotoxy(x, y + 5); cout << " `8b   d8'  88 8b          88   8b       d8 88          `8b   d8'           ";
+	tools::gotoxy(x, y + 6); cout << "  `8b,d8'   88 \"8a, , aa   88, \"8a,   ,a8\" 88           `8b,d8'          ";
 	tools::gotoxy(x, y + 7); cout << "    \"8\"     88  `\"Ybbd8\"'   \"Y888 `\"YbbdP\"'  88             Y88'     ";
-	tools::gotoxy(x, y + 8); cout << "                                                            d8' ";
-	tools::gotoxy(x, y + 9); cout << "                                                           d8'    ";
-
-
-
+	tools::gotoxy(x, y + 8); cout << "                                                            d8'             ";
+	tools::gotoxy(x, y + 9); cout << "                                                           d8'              ";
+	tools::SetColor();
 }
 
 void Interface::DefeatMessage()
 {
-	tools::DrawWhiteSpace(BORDER_LEFT_WIDE, BORDER_UP, BORDER_RIGHT_WIDE, BORDER_DOWN);
+	tools::DrawWhiteSpace(BORDER_LEFT_WIDE, BORDER_UP, BORDER_RIGHT_WIDE, BORDER_DOWN+15);
 	int x = 25;
 	int y = 10;
-	tools::gotoxy(x, y); cout << "         @@@ @@@   @@@@@@   @@@  @@@      @@@@@@   @@@@@@@   @@@@@@@@  ";
+	tools::SetColor(11);
+	tools::gotoxy(x, y); cout << "         @@@ @@@   @@@@@@   @@@  @@@      @@@@@@   @@@@@@@   @@@@@@@@      ";
 	tools::gotoxy(x, y + 1); cout << "         @@@ @@@  @@@@@@@@  @@@  @@@     @@@@@@@@  @@@@@@@@  @@@@@@@@  ";
 	tools::gotoxy(x, y + 2); cout << "         @@! !@@  @@!  @@@  @@!  @@@     @@!  @@@  @@!  @@@  @@!       ";
 	tools::gotoxy(x, y + 3); cout << "         !@! @!!  !@!  @!@  !@!  @!@     !@!  @!@  !@!  @!@  !@!       ";
@@ -83,57 +101,60 @@ void Interface::DefeatMessage()
 	tools::gotoxy(x, y + 7); cout << "           :!:    :!:  !:!  :!:  !:!     :!:  !:!  :!:  !:!  :!:       ";
 	tools::gotoxy(x, y + 8); cout << "            ::    ::::: ::  ::::: ::     ::   :::  ::   :::   :: ::::  ";
 	tools::gotoxy(x, y + 9); cout << "            :      : :  :    : :  :       :   : :   :   : :  : :: ::   ";
-	tools::gotoxy(x, y + 10); cout << "";
-	tools::gotoxy(x, y + 12); cout << "                    @@@        @@@@@@    @@@@@@   @@@@@@@  ";
-	tools::gotoxy(x, y + 13); cout << "                    @@@       @@@@@@@@  @@@@@@@   @@@@@@@  ";
-	tools::gotoxy(x, y + 14); cout << "                    @@!       @@!  @@@  !@@         @@!    ";
-	tools::gotoxy(x, y + 15); cout << "                    !@!       !@!  @!@  !@!         !@!    ";
-	tools::gotoxy(x, y + 16); cout << "                    @!!       @!@  !@!  !!@@!!      @!!    ";
-	tools::gotoxy(x, y + 17); cout << "                    !!!       !@!  !!!   !!@!!!     !!!    ";
-	tools::gotoxy(x, y + 18); cout << "                    !!:       !!:  !!!       !:!    !!:    ";
-	tools::gotoxy(x, y + 19); cout << "                     :!:      :!:  !:!      !:!     :!:   ";
-	tools::gotoxy(x, y + 20); cout << "                     :: ::::  ::::: ::  :::: ::      ::    ";
-	tools::gotoxy(x, y + 21); cout << "                    : :: : :   : :  :   :: : :       :   ";
+	tools::gotoxy(x, y + 10); cout << "                                                                      ";
+	tools::gotoxy(x, y + 11); cout << "                                                                      ";
+	tools::gotoxy(x, y + 12); cout << "                    @@@        @@@@@@    @@@@@@   @@@@@@@             ";
+	tools::gotoxy(x, y + 13); cout << "                    @@@       @@@@@@@@  @@@@@@@   @@@@@@@             ";
+	tools::gotoxy(x, y + 14); cout << "                    @@!       @@!  @@@  !@@         @@!               ";
+	tools::gotoxy(x, y + 15); cout << "                    !@!       !@!  @!@  !@!         !@!               ";
+	tools::gotoxy(x, y + 16); cout << "                    @!!       @!@  !@!  !!@@!!      @!!               ";
+	tools::gotoxy(x, y + 17); cout << "                    !!!       !@!  !!!   !!@!!!     !!!               ";
+	tools::gotoxy(x, y + 18); cout << "                    !!:       !!:  !!!       !:!    !!:               ";
+	tools::gotoxy(x, y + 19); cout << "                     :!:      :!:  !:!      !:!     :!:               ";
+	tools::gotoxy(x, y + 20); cout << "                     :: ::::  ::::: ::  :::: ::      ::               ";
+	tools::gotoxy(x, y + 21); cout << "                    : :: : :   : :  :   :: : :       :                ";
+	tools::SetColor();
 
 }
 
 void Interface::PlayAgainMessage()
 {
-	tools::DrawWhiteSpace(0, 0, BORDER_RIGHT, BORDER_DOWN);
+	tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN+15);
 	int x = 10;
 	int y = 10;
-	tools::gotoxy(x, y); cout << "         ___   _                                                    _   ";
-	tools::gotoxy(x, y + 1); cout << "        (  _`a_ )                                        _       /'_`a ";
-	tools::gotoxy(x, y + 2); cout << "        | |_) )| |    _ _  _   _       _ _    __     _ _ (_)  ___(_) ) |";
-	tools::gotoxy(x, y + 3); cout << "        | ,__/'| |  /'_` )( ) ( )    /'_` ) /'_ `a /'_` )| |/' _ `a /'/'";
-	tools::gotoxy(x, y + 4); cout << "        | |    | | ( (_| || (_) |   ( (_| |( (_) |( (_| || || ( ) ||_|";
-	tools::gotoxy(x, y + 5); cout << "        (_)   (___)`a__,_)`a__, |   `a_,_)`a_  |`a__,_)(_)(_) (_)(_) ";
-	tools::gotoxy(x, y + 6); cout << "                          ( )_| |          ( )_) |";
-	tools::gotoxy(x, y + 7); cout << "                          `a___/'           a__/' ";
-	tools::gotoxy(x, y + 9); cout << " 再玩一次請按 Y/y 結束請按 N/n ";
+	tools::gotoxy(x, y); cout << "         ___   _                                                    _         ";
+	tools::gotoxy(x, y + 1); cout << "        (  _`\\_ )                                        _       /'_`\\  ";
+	tools::gotoxy(x, y + 2); cout << "        | |_) )| |    _ _  _   _       _ _    __     _ _ (_)  ___(_) ) |  ";
+	tools::gotoxy(x, y + 3); cout << "        | ,__/'| |  /'_` )( ) ( )    /'_` ) /'_ `\\ /'_` )| |/' _ `\\ /'/'";
+	tools::gotoxy(x, y + 4); cout << "        | |    | | ( (_| || (_) |   ( (_| |( (_) |( (_| || || ( ) ||_|    ";
+	tools::gotoxy(x, y + 5); cout << "        (_)   (___)`\\__,_)`\\__, |   `\\_,_)`\\_  |`\\__,_)(_)(_) (_)(_) ";
+	tools::gotoxy(x, y + 6); cout << "                          ( )_| |          ( )_) |                        ";
+	tools::gotoxy(x, y + 7); cout << "                          `\\___/'           \\__/'                       ";
+	tools::gotoxy(x, y + 9); cout << "Press (Y) to play again           press (n) to end the game"<<endl;
 }
 
 void Interface::GoodbyeMessage()
 {
-	tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN);
+	tools::DrawWhiteSpace(0, 0, BORDER_RIGHT_WIDE, BORDER_DOWN+15);
 	int x = 15;
 	int y = 10;
-	tools::gotoxy(x, y); cout << "     .___________. __    __       ___      .__   __.  __  ___      _______.";
-	tools::gotoxy(x, y + 1); cout << "     |           ||  |  |  |     /   aa     |  a |  | |  |/  /     /       |";
-	tools::gotoxy(x, y + 2); cout << "     `---|  |----`|  |__|  |    /  ^  a    |   a|  | |  '  /     |   (----`";
-	tools::gotoxy(x, y + 3); cout << "         |  |     |   __   |   /  /_a  a   |  . `  | |    <       a   a  ";
-	tools::gotoxy(x, y + 4); cout << "         |  |     |  |  |  |  /  _____  aa  |  |a   | |  .  a  .----)   | ";
-	tools::gotoxy(x, y + 5); cout << "         |__|     |__|  |__| /__/     a_aa |__| a__| |__|a__a |_______/ ";
-	tools::gotoxy(x, y + 6); cout << "                        _______   ______   .______      ";
-	tools::gotoxy(x, y + 7); cout << "                       |   ____| /  __  a  |   _  a   ";
-	tools::gotoxy(x, y + 8); cout << "                       |  |__   |  |  |  | |  |_)  | ";
-	tools::gotoxy(x, y + 9); cout << "                       |   __|  |  |  |  | |      /  ";
-	tools::gotoxy(x, y + 10); cout << "                       |  |     |  `--'  | |  |a  a----.";
-	tools::gotoxy(x, y + 11); cout << "                       |__|      a_____/  | _| `._____|";
-	tools::gotoxy(x, y + 12); cout << "    .______    __          ___   ____    ____  __  .__   __.   _______  __ ";
-	tools::gotoxy(x, y + 13); cout << "    |   _  a  |  |        /   a a   a  /   / |  | |  a |  |  /  _____||  | ";
-	tools::gotoxy(x, y + 14); cout << "    |  |_)  | |  |       /  ^  a  a   a/   /  |  | |   a  | |  |  __  |  |";
-	tools::gotoxy(x, y + 15); cout << "    |   ___/  |  |      /  /_a  a  aa    _/   |  | |  . `  | |  | |_ | |  | ";
-	tools::gotoxy(x, y + 16); cout << "    |  |      |  `----./  _____  a   |  |     |  | |  |a   | |  |__| | |__|";
-	tools::gotoxy(x, y + 17); cout << "    | _|      |_______/__/     a_a  |__|     |__| |__| a__|  a______| (__) ";
+	system("Color F0");
+	tools::gotoxy(x, y); cout << "     .___________. __    __       ___      .__   __.  __  ___      _______.           ";
+	tools::gotoxy(x, y + 1); cout << "     |           ||  |  |  |     /   \\\\     |  \\ |  | |  |/  /     /     |   ";
+	tools::gotoxy(x, y + 2); cout << "     `---|  |----`|  |__|  |    /  ^  \\    |   \\|  | |  '  /     |   (----`     ";
+	tools::gotoxy(x, y + 3); cout << "         |  |     |   __   |   /  /_\\  \\   |  . `  | |    <       \\   \\       ";
+	tools::gotoxy(x, y + 4); cout << "         |  |     |  |  |  |  /  _____  \\\\  |  |\\   | |  .  \\  .----)   |     ";
+	tools::gotoxy(x, y + 5); cout << "         |__|     |__|  |__| /__/     \\_\\\\ |__| \\__| |__|\\__\\ |_______/     ";
+	tools::gotoxy(x, y + 6); cout << "                        _______   ______   .______                                ";
+	tools::gotoxy(x, y + 7); cout << "                       |   ____| /  __  \\  |   _  \\                             ";
+	tools::gotoxy(x, y + 8); cout << "                       |  |__   |  |  |  | |  |_)  |                              ";
+	tools::gotoxy(x, y + 9); cout << "                       |   __|  |  |  |  | |      /                               ";
+	tools::gotoxy(x, y + 10); cout << "                       |  |     |  `--'  | |  |\\  \\----.                       ";
+	tools::gotoxy(x, y + 11); cout << "                       |__|      \\_____/  | _| `._____|                         ";
+	tools::gotoxy(x, y + 12); cout << "    .______    __          ___   ____    ____  __  .__   __.   _______  __       ";
+	tools::gotoxy(x, y + 13); cout << "    |   _  a  |  |        /   \\ \\   \\  /   / |  | |  \\ |  |  /  _____||  |   ";
+	tools::gotoxy(x, y + 14); cout << "    |  |_)  | |  |       /  ^  \\  \\   \\/   /  |  | |   \\  | |  |  __  |  |   ";
+	tools::gotoxy(x, y + 15); cout << "    |   ___/  |  |      /  /_\\  \\  \\\\    _/   |  | |  . `  | |  | |_ | |  |  ";
+	tools::gotoxy(x, y + 16); cout << "    |  |      |  `----./  _____  \\   |  |     |  | |  |\\   | |  |__| | |__|    ";
+	tools::gotoxy(x, y + 17); cout << "    | _|      |_______/__/     \\_\\  |__|     |__| |__| \\__|  \\______| (__)   ";
 }

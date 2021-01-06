@@ -9,12 +9,12 @@ using namespace std;
 
 void monster::Draw()
 {
-    tools::gotoxy(x, y); cout << "59";
+    tools::gotoxy(x, y - 1); cout << "()";
 }
  
 void monster::Erase()
 {
-    tools::gotoxy(x, y); cout << "  ";  
+    tools::gotoxy(x, y - 1); cout << "  ";  
 }
  
 void monster::Move()
