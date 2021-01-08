@@ -8,6 +8,7 @@
 #include"monster.h"
 #include"tools.h"
 #include"Plane.h"
+#include"bigmonster.h"
 #pragma warning(disable:4996)
 using namespace std;
 
@@ -75,25 +76,37 @@ bool game::StartGame()
     int gameScore = 0; // the score of the game
     
     Plane std = Plane(STUDENT_INITIAL_X, STUDENT_INITIAL_Y); // the position of student in the beginning
-    list<monster> scores; // dynamic list for 59("äº?ä¹?")
+    list<monster> scores; // dynamic list
     list<monster>::iterator s; // iterator for the list
     list<bullet> passes; // dynamic list for pass("??????") 
     list<bullet>::iterator p; // another iterator for this list 
+    list<bigmonster> bmons;
+    list<bigmonster>::iterator bm;
     
     srand(time(nullptr)); // generate random number for the positions of 59s
     int mapWidth = BORDER_RIGHT - BORDER_LEFT + 1; // border included
     int mapLength = BORDER_DOWN - BORDER_UP + 1; // border included
     double rnX = 0;
     double rnY = 0; // initialize random number
-    for (int i = 0; i < SCORE59_CNT; i++) // generate 59s
+    double rnbX = 0;
+    double rnbY = 0;
+    for (int i = 0; i < 10; i++) // generate 59s
     {
         rnX = (rand() % mapWidth) + BORDER_LEFT;
-        rnY = (rand() % (mapLength / 2)) + (BORDER_UP); //  (mapLength / 2) prevents 59s from being too low on the map at first
+        rnY = (rand() % (mapLength / 2)) + (BORDER_UP);
         scores.push_back(monster(rnX, rnY));
+        //bmons.push_back(bigmonster(rnbX,rnbY));
+    }
+    for (int i = 0; i < 3; i++) // generate 59s
+    {
+        rnbX = (rand() % mapWidth) + BORDER_LEFT;
+        rnbY = (rand() % (mapLength / 2)) + (BORDER_UP); //  (mapLength / 2) prevents 59s from being too low on the map at first
+        bmons.push_back(bigmonster(rnbX,rnbY));
     }
     
     while(duration < timeLimit) // while the game is not end
     {   
+
         for (p = passes.begin(); p != passes.end(); p++) // for every pass that in the list
         {
             p->move(); // move a SPEED_PASS unit upward
@@ -114,6 +127,25 @@ bool game::StartGame()
                 
                 rnX = (rand() % mapWidth) + BORDER_LEFT;
                 scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+            }   
+        }
+        for (bm = bmons.begin(); bm != bmons.end(); bm++) // for every 59 that in the list
+        {  
+            if(!bm->isOut()) {
+                bm->Move();
+            }
+            else 
+            {
+                bm->Moveback();
+            }          
+            // move a SPEED_SCORE59_EASY /SPEED_SCORE59_HARD unit downward
+            if (bm->isreallyOut()) // if the 59 reaches the bottom of map
+            {
+                bm->Erase(); // clear it in the terminal 
+                bm = bmons.erase(bm); // delete it in the list
+                
+                rnbX = (rand() % mapWidth) + BORDER_LEFT;
+                bmons.push_back(bigmonster(rnbX, BORDER_UP));
             }   
         }
         
@@ -149,6 +181,21 @@ bool game::StartGame()
                 
                 rnX = (rand() % mapWidth) + BORDER_LEFT;
                 scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+            }           
+        }
+        for (bm = bmons.begin(); bm != bmons.end(); bm++) // for every 59 that in the list
+        {
+            // check whether 59 bumps into student
+            if (Collision(bm->X(), bm->Y(), std.X(), std.Y())) 
+            {
+                gameScore -= LOSE_GAME_POINT+1;
+                std.Erase(); // clear it in the terminal
+                bm->Erase(); // clear it in the terminal  
+                Sleep(SHOW_MSG_SHORT);
+                bm = bmons.erase(bm); // delete it in the list
+                
+                rnbX = (rand() % mapWidth) + BORDER_LEFT;
+                bmons.push_back(bigmonster(rnbX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
             }           
         }
                  

@@ -1,4 +1,4 @@
-#include<iostream>
+﻿#include<iostream>
 #include"monster.h"
 #include"tools.h"
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 
 void monster::Draw()
 {
-    tools::gotoxy(x, y - 1); cout << "()";
+    tools::gotoxy(x, y - 1); cout << "☆";
 }
  
 void monster::Erase()
