@@ -3,14 +3,22 @@
 #include"tools.h"
 #include"interface.h"
 #include"game.h"
+#include<graphics.h>
 #pragma warning(disable:4996)
 
-#define BORDER_RIGHT_WIDE 115
-#define BORDER_DOWN 28
+#define BORDER_RIGHT_WIDE 533
+#define BORDER_DOWN 300
 #define SHOW_MSG_LONG 1500
 
 int main()
 {
+	initgraph(640, 360);
+	IMAGE img;
+	bool a = 1;
+
+	loadimage(&img, L"C:\\Users\\Username\\Desktop\\starburst2.jpg", 640, 360, a);
+	putimage(0, 0, &img);
+
     tools::Initialize(); // some background settings 
     
     Interface::WelcomeMessage();

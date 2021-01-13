@@ -1,20 +1,23 @@
 ﻿#include<iostream>
 #include"monster.h"
 #include"tools.h"
+#include<graphics.h>
 using namespace std;
 
-#define SPEED_SCORE59_EASY 0.1
-#define SPEED_SCORE59_HARD 0.5
-#define BORDER_DOWN 28
+#define SPEED_SCORE59_EASY 3
+#define SPEED_SCORE59_HARD 6
+#define BORDER_DOWN 300
 
 void monster::Draw()
 {
-    tools::gotoxy(x, y - 1); cout << "☆";
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T("☆"));
 }
  
 void monster::Erase()
 {
-    tools::gotoxy(x, y - 1); cout << "  ";  
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T(" "));
 }
  
 void monster::Move()

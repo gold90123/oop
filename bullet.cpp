@@ -2,8 +2,9 @@
 #include<Windows.h>
 #include"bullet.h"
 #include"tools.h"
-#define BORDER_UP 2
-#define SPEED_BULLET 0.5
+#include<graphics.h>
+#define BORDER_UP 10
+#define SPEED_BULLET 5
 using namespace std;
 
 bullet::bullet(double x, double y) {
@@ -17,12 +18,23 @@ double bullet::Y() {
 	return y;
 }
 void bullet::print() {
-	tools::gotoxy(x, y);
-	cout << "^";
+	setbkmode(TRANSPARENT);
+	int r = rand() % 2;
+	if (r == 0) {
+		COLORREF color = RGB(0, 0, 255);
+		settextcolor(color);
+	}
+	else if (r == 1) {
+		COLORREF color = RGB(0, 0, 0);
+		settextcolor(color);
+	}
+	outtextxy(x, y, _T("^"));
+	COLORREF color_white = RGB(255, 255, 255);
+	settextcolor(color_white);
 }
 void bullet::erase() {
-	tools::gotoxy(x, y);
-	cout << " ";
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T(" "));
 }
 void bullet::move() {
 	erase();

@@ -2,6 +2,7 @@
 #include "tools.h"
 #include <conio.h>
 #include<iostream>
+#include<graphics.h>
 using namespace std;
 #pragma warning(disable:4996)
 
@@ -9,11 +10,11 @@ using namespace std;
 #define KEY_DOWN  80
 #define KEY_LEFT  75
 #define KEY_RIGHT 77
-#define BORDER_UP 2 // border for the objects in the game
-#define BORDER_DOWN 28
-#define BORDER_LEFT 43  
-#define BORDER_RIGHT 73 
-#define SPEED_PLANE 1.1
+#define BORDER_UP 10 // border for the objects in the game
+#define BORDER_DOWN 300
+#define BORDER_LEFT 10 //0
+#define BORDER_RIGHT 533
+#define SPEED_PLANE 20
 
 Plane::Plane(double x,double y){
     this->x = x; this->y = y;
@@ -25,22 +26,21 @@ double Plane::Y(){ return y; }
 
 void Plane::Draw()
 {
-	/*tools::gotoxy(x - 2, y - 1); cout << "|▅●▅|";
-	tools::gotoxy(x - 2, y); cout << " └▇┘";
-    tools::gotoxy(x-2, y+1); cout << " ︻┴︻";*/
-    
-	//tools::gotoxy(x, y - 1); cout << "*";    //gotoxy(x - 2, y - 1) 全部都是 x - 2    ?_?
-	tools::gotoxy(x, y); cout << "*";
-	//tools::gotoxy(x, y + 1); cout << "*";
+	/*setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T("*"));*/
+
+	IMAGE img;
+	bool a = 1;
+
+	loadimage(&img, L"C:\\Users\\Username\\Desktop\\Kirito.jpg", 50, 50, a);
+	putimage(x - 20, y, &img);
 
 }
 
 void Plane::Erase()
 {
-    //tools::gotoxy(x, y - 1); cout << " ";    //gotoxy(x - 2, y - 1) 全部都是 x - 2    ?_?
-	tools::gotoxy(x, y); cout << " ";
-	//tools::gotoxy(x, y + 1); cout << " ";
-
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T(" "));
 }
 
 void Plane::Move()

@@ -1,6 +1,7 @@
 #include<iostream>
 #include"tools.h"
 #include<windows.h>
+#include<graphics.h>
 using namespace std;
 
 
@@ -15,14 +16,9 @@ void tools::gotoxy(double x, double y) // allows to move inside the terminal usi
 }
 void tools::DrawWhiteSpace(int a_x, int a_y, int b_x, int b_y) // to clean a certain space in the terminal 
 { 
-    for(int i = a_x; i <= b_x; i++)
-    {
-        for(int j = a_y; j <= b_y; j++)
-        {
-            tools::gotoxy(i,j); 
-            cout << " ";
-        }
-    }
+	IMAGE img;
+	loadimage(&img, L"C:\\Users\\Username\\Desktop\\starburst2.jpg", 640, 360);
+	putimage(0, 0, &img);
 }
 void tools::Initialize() // set console title and hide console cursor
 {

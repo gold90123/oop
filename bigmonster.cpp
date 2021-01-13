@@ -1,29 +1,29 @@
 ﻿#include<iostream>
 #include"bigmonster.h"
 #include"tools.h"
+#include<graphics.h>
 using namespace std;
 
-#define SPEED_SCORE59_EASY 0.1
-#define SPEED_SCORE59_HARD 0.5
-#define BORDER_DOWN 28
-#define BORDER_UP 2
+#define SPEED_SCORE59_EASY 3
+#define SPEED_SCORE59_HARD 6
+#define BORDER_DOWN 300
+#define BORDER_UP 10
 
 bigmonster::bigmonster(double x, double y):monster(x, y) {
 	this->x = x;
 	this->y = y;
 	isback = false;
 }
-
 void bigmonster::Draw()
 {
-	tools::SetColor(12);
-	tools::gotoxy(x, y - 1); cout << "★";
-	tools::SetColor();
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T("★"));
 }
 
 void bigmonster::Erase()
 {
-	tools::gotoxy(x, y - 1); cout << "  ";
+	setbkmode(TRANSPARENT);
+	outtextxy(x, y, _T("  "));
 }
 
 void bigmonster::Move()

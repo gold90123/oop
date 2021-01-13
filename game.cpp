@@ -9,30 +9,31 @@
 #include"tools.h"
 #include"Plane.h"
 #include"bigmonster.h"
+#include<graphics.h>
 #pragma warning(disable:4996)
 using namespace std;
 
-#define BORDER_RIGHT_WIDE 115
-#define BORDER_DOWN 28
+#define BORDER_RIGHT_WIDE 533
+#define BORDER_DOWN 300
 #define TIME_LIMIT 30
-#define BORDER_RIGHT 73
-#define BORDER_LEFT 43  
-#define BORDER_UP 2
+#define BORDER_RIGHT 533
+#define BORDER_LEFT 10 //43 //0  
+#define BORDER_UP 10
 #define SCORE59_CNT 10
-#define STUDENT_INITIAL_X 58.5
-#define STUDENT_INITIAL_Y 25
+#define STUDENT_INITIAL_X 260
+#define STUDENT_INITIAL_Y 250
 #define GET_GAME_POINT 2
 #define LOSE_GAME_POINT 5
-#define VICTORY_GATE 60
+#define VICTORY_GATE -10
 #define SHOW_MSG_SHORT 100
 #define INTERVAL_BETWEEN_EACH_LOOP 20
-#define EQUALITY_GAP_X 1.5
-#define EQUALITY_GAP_Y 1
+#define EQUALITY_GAP_X 10
+#define EQUALITY_GAP_Y 10
 #define TIME_POS_X 20 
 #define TIME_POS_Y 0
-#define CUR_SCORE_POS_X 50
+#define CUR_SCORE_POS_X 200
 #define CUR_SCORE_POS_Y 0  
-#define HIS_SCORE_POS_X 80
+#define HIS_SCORE_POS_X 400
 #define HIS_SCORE_POS_Y 0 
 
 int HISTORY_HIGH_SCORE = 0;
@@ -106,6 +107,10 @@ bool game::StartGame()
     
     while(duration < timeLimit) // while the game is not end
     {   
+		IMAGE img;
+		bool a = 1;
+		loadimage(&img, L"C:\\Users\\Username\\Desktop\\background.jpg", 640, 360, a);
+		putimage(0, 0, &img);
 
         for (p = passes.begin(); p != passes.end(); p++) // for every pass that in the list
         {
@@ -114,6 +119,7 @@ bool game::StartGame()
             {
                 p->erase(); // clear it in the terminal 
                 p = passes.erase(p); // delete it in the list
+				break; //亂加的，結果真的有用
             }
         }
         
@@ -149,7 +155,7 @@ bool game::StartGame()
             }   
         }
         
-        for (s = scores.begin(); s != scores.end(); s++) // for every 59 that in the list
+         for (s = scores.begin(); s != scores.end(); s++) // for every 59 that in the list
         {
             // check whether 59 bumps into passes
             for (p = passes.begin(); p != passes.end(); p++) // for every pass that in the list
@@ -164,10 +170,31 @@ bool game::StartGame()
                     
                     rnX = (rand() % mapWidth) + BORDER_LEFT;
                     scores.push_back(monster(rnX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+					break;
                 }
             }
         } 
         
+		for (bm = bmons.begin(); bm != bmons.end(); bm++) // for every 59 that in the list
+		{
+			// check whether 59 bumps into passes
+			for (p = passes.begin(); p != passes.end(); p++) // for every pass that in the list
+			{
+				if (Collision(bm->X(), bm->Y(), p->X(), p->Y()))
+				{
+					gameScore += (GET_GAME_POINT+1);
+					p->erase(); // clear it in the terminal
+					bm->Erase(); // clear it in the terminal  
+					p = passes.erase(p); // delete it in the list
+					bm = bmons.erase(bm); // delete it in the list
+
+					rnbX = (rand() % mapWidth) + BORDER_LEFT;
+					bmons.push_back(bigmonster(rnbX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+					break;
+				}
+			}
+		}
+
         for (s = scores.begin(); s != scores.end(); s++) // for every 59 that in the list
         {
             // check whether 59 bumps into student
@@ -188,7 +215,7 @@ bool game::StartGame()
             // check whether 59 bumps into student
             if (Collision(bm->X(), bm->Y(), std.X(), std.Y())) 
             {
-                gameScore -= LOSE_GAME_POINT+1;
+                gameScore -= LOSE_GAME_POINT-1;
                 std.Erase(); // clear it in the terminal
                 bm->Erase(); // clear it in the terminal  
                 Sleep(SHOW_MSG_SHORT);
@@ -196,6 +223,7 @@ bool game::StartGame()
                 
                 rnbX = (rand() % mapWidth) + BORDER_LEFT;
                 bmons.push_back(bigmonster(rnbX, BORDER_UP)); // add a new 59 to the list to keep the number of 59s in the game the same
+				break; //實驗
             }           
         }
                  
@@ -238,15 +266,25 @@ bool game::Collision(double x1, double y1, double x2, double y2) // check whethe
 }
 void game::UpdateInfoBar(int gameScore, std::chrono::seconds leftTime) // update game information to the user during the game
 {
-    tools::gotoxy(TIME_POS_X, TIME_POS_Y); cout << "Time Left : " << leftTime.count() << "   "; // update time 
-    // because sometimes the digits of number are different, print some white spaces after the number to erase the digits from the previous number 
-    tools::gotoxy(CUR_SCORE_POS_X, CUR_SCORE_POS_Y); cout << "Score : " << gameScore << "  "; // update game score 
-    tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "High Record : " << HISTORY_HIGH_SCORE; // update history high game score     
-    if (gameScore >= HISTORY_HIGH_SCORE)
-    {
-        HISTORY_HIGH_SCORE = gameScore;
-        tools::gotoxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y); cout << "High Record : " << HISTORY_HIGH_SCORE; // update history high game score     
-    }
+	//setbkmode(TRANSPARENT);
+	outtextxy(TIME_POS_X, TIME_POS_Y, _T("time: "));
+	outtextxy(TIME_POS_X + 50, TIME_POS_Y, (leftTime.count() / 10 + '0'));
+	outtextxy(TIME_POS_X + 60, TIME_POS_Y, (leftTime.count() % 10 + '0'));
+	// because sometimes the digits of number are different, print some white spaces after the number to erase the digits from the previous number 
+	outtextxy(CUR_SCORE_POS_X, CUR_SCORE_POS_Y, _T("score: "));
+	outtextxy(CUR_SCORE_POS_X + 40, CUR_SCORE_POS_Y, (gameScore / 10 + '0'));
+	outtextxy(CUR_SCORE_POS_X + 50, CUR_SCORE_POS_Y, (gameScore % 10 + '0'));
+	outtextxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y, _T("history high: "));
+	outtextxy(HIS_SCORE_POS_X + 100, HIS_SCORE_POS_Y, (HISTORY_HIGH_SCORE / 10 + '0'));
+	outtextxy(HIS_SCORE_POS_X + 110, HIS_SCORE_POS_Y, (HISTORY_HIGH_SCORE % 10 + '0'));
+
+	if (gameScore >= HISTORY_HIGH_SCORE)
+	{
+		HISTORY_HIGH_SCORE = gameScore;
+		outtextxy(HIS_SCORE_POS_X, HIS_SCORE_POS_Y, _T("history high: "));
+		outtextxy(HIS_SCORE_POS_X + 100, HIS_SCORE_POS_Y, (HISTORY_HIGH_SCORE / 10 + '0'));
+		outtextxy(HIS_SCORE_POS_X + 110, HIS_SCORE_POS_Y, (HISTORY_HIGH_SCORE % 10 + '0'));
+	}
 }
  
 bool game::PlayAgainOrNot()
